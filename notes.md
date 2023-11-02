@@ -163,3 +163,34 @@ Ce fichier `application.yml` inclut plusieurs sections de configurations couramm
 5. **Configuration des logs** : Paramètres de niveau de journalisation pour les logs de différentes parties de l'application.
 
 Assurez-vous d'adapter ces configurations en fonction de vos besoins spécifiques, notamment les détails de la base de données, les paramètres de sécurité et d'autres propriétés applicatives que vous pourriez utiliser dans votre projet Spring Boot.
+
+Pour établir une connexion à une base de données en utilisant un fichier `application.properties` dans un projet Spring Boot, voici un exemple de configuration :
+
+Créez un fichier `application.properties` à la racine de votre dossier de ressources (généralement `/src/main/resources`) et ajoutez les propriétés de configuration pour la connexion à la base de données.
+
+Exemple de contenu pour `application.properties` pour se connecter à une base de données MySQL :
+
+```properties
+# Configuration de la source de données (base de données)
+spring.datasource.url=jdbc:mysql://localhost:3306/nom_de_votre_base_de_donnees
+spring.datasource.username=votre_utilisateur_mysql
+spring.datasource.password=votre_mot_de_passe_mysql
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Configurer Hibernate pour JPA
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=update
+```
+
+Explications des propriétés :
+
+- `spring.datasource.url`: URL de connexion à la base de données.
+- `spring.datasource.username`: Nom d'utilisateur de la base de données.
+- `spring.datasource.password`: Mot de passe de la base de données.
+- `spring.datasource.driver-class-name`: Classe du pilote de la base de données.
+- `spring.jpa.database-platform`: Plateforme de la base de données pour Hibernate.
+- `spring.jpa.hibernate.ddl-auto`: Mode de génération de schéma pour Hibernate (ici, `update` mettra à jour le schéma au démarrage).
+
+Ajoutez ces configurations dans votre fichier `application.properties` pour configurer la connexion à votre base de données MySQL.
+
+Ces paramètres sont des configurations de base, assurez-vous d'ajuster les informations de connexion en fonction de votre environnement et des détails de votre base de données. Après avoir configuré le fichier `application.properties`, votre application Spring Boot devrait être prête à se connecter à la base de données MySQL lors du démarrage.

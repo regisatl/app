@@ -3,24 +3,29 @@ package bj.highfive.app;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Album {
 
     public Album() {
     }
 
     public Album(
-            String id,
             String ref,
             String title,
             String description,
             String duration,
             Boolean status,
             String url,
+
             List<String> tags,
             String like,
-            String name) {
-
-        this.id = id;
+            String name
+        ) {
         this.ref = ref;
         this.title = title;
         this.description = description;
@@ -33,15 +38,9 @@ public class Album {
     }
 
     // Propriété id avec le getters et le setters
-    private String id;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     // Propriété ref avec le getters et le setters
     private String ref;
@@ -160,7 +159,7 @@ public class Album {
     }
 
     public int hashCode() {
-        return  Objects.hash(this.id, this.name , this.title);
+        return Objects.hash(this.id, this.name, this.title);
 
     }
 
