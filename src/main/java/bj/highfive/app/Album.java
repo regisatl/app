@@ -23,7 +23,7 @@ public class Album {
             String url,
 
             List<String> tags,
-            String like,
+            String like_count,
             String name
         ) {
         this.ref = ref;
@@ -33,7 +33,7 @@ public class Album {
         this.status = status;
         this.url = url;
         this.tags = tags;
-        this.like = like;
+        this.like_count = like_count;
         this.name = name;
     }
 
@@ -41,6 +41,15 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     // Propriété ref avec le getters et le setters
     private String ref;
@@ -120,14 +129,16 @@ public class Album {
     }
 
     // Propriété like avec le getters et le setters
-    private String like;
+    private String like_count;
 
-    public String getLike() {
-        return like;
+
+
+    public String getLike_count() {
+        return like_count;
     }
 
-    public void setLike(String like) {
-        this.like = like;
+    public void setLike_count(String like_count) {
+        this.like_count = like_count;
     }
 
     // Propriété name avec le getters et le setters
